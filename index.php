@@ -131,10 +131,10 @@
             body: data
         }
         fetch(action, config)
-            .then(respuesta => respuesta.json())
+            // .then(respuesta => respuesta.json())
             //Este pedasito de codigo me servira por si hay un error en la ejecucion y me dira cual sera el error
-            // .then(respuesta => respuesta.text())
-            // .then(text =>console.log(text))
+            .then(respuesta => respuesta.text())
+            .then(text =>console.log(text))
 
             .then(respuesta => {
                 // console.log(respuesta);
