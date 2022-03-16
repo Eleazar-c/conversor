@@ -8,6 +8,11 @@ $numero = preg_replace('/\s+/', '', $numero);
 
 // ANTES DE COMENZAR A CONVERTIR LOS DATOS COMENZAMOS A VERIFICAR QUE EL TIPO CONCUERDE CON LOS DATOS EMVIADOS
 if ($TIPO == "BINARIO") {
+    // vamos a usar una funcino para que me diga si es correcto los numeros para que sea binario o no
+    /*primero vamos a pasarle un patron que es el siguiente
+    [01.]{1,1000}== esto quiere decir que me va verificar y la variables $numero tiene ceros y unos o punto si
+    si tiene como uno dos o un tres me va avisar que no es un numero decimal. 
+    */
     if (verificar_datos("[01.]{1,1000}",$numero)) {
         $datos=[
             "TITULO"=>"NO ES UN NUMERO BINARIO"
@@ -16,6 +21,8 @@ if ($TIPO == "BINARIO") {
         exit();
      }
 }else if ($TIPO == "OCTAL") {
+    /*  [0-7.]{1,1000} === este patron me dice que solo permite numero del 0 al 7 tambien me permite numeros
+    y me permite una longitud de 1 a 1000 caracteres*/
     if (verificar_datos("[0-7.]{1,1000}",$numero)) {
         $datos=[
             "TITULO"=>"NO ES UN NUMERO OCTAL"
@@ -24,6 +31,7 @@ if ($TIPO == "BINARIO") {
         exit();
      }
 }else if ($TIPO == "DECIMAL") {
+    // el patron es el mismo solo que aqui me permite numero del 0 al 9
     if (verificar_datos("[0-9.]{1,1000}",$numero)) {
         $datos=[
             "TITULO"=>"NO ES UN NUMERO DECIMAL "
@@ -32,6 +40,8 @@ if ($TIPO == "BINARIO") {
         exit();
      }
 }else if ($TIPO == "HEXADECIMAL") {
+    /*ahora aqui este patron me dice que me permite numero del 0 al 9 y letras del la A a la F tanto como 
+    minusculas como mayusculas*/
     if (verificar_datos("[0-9A-Fa-f.]{1,1000}",$numero)) {
         $datos=[
             "TITULO"=>"NO ES UN NUMERO HEXADECIMAL "
